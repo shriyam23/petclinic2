@@ -12,7 +12,7 @@ pipeline {
     stage('Testing') {
       steps {
         withSonarQubeEnv('sonarqubelocal') {
-          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:4.7.0.2747:sonar'
+          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
         }
 
         sh '''mvn clean install sonar:sonar
