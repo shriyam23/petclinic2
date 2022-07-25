@@ -11,6 +11,9 @@ pipeline {
 
     stage('Testing') {
       steps {
+        withSonarQubeEnv(installationName: 'sonarqubelocal') { 
+          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
+        }
         sh '''mvn clean install sonar:sonar
 mvn clean verify sonar:sonar \\
 -Dsonar.host.url=http://3.225.167.125:9000 \\
