@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Starting build'
-        sh 'mvn clean install -Dlicense.skip=trueÂ -Dserver.port=8888'
+        sh 'mvn clean install -Dlicense.skip=trueÃ‚Â -Dserver.port=8888'
         echo 'Build step complete'
       }
     }
@@ -12,12 +12,12 @@ pipeline {
     stage('Testing') {
       steps {
         sh '''mvn clean verify sonar:sonar \\
-  -Dsonar.projectKey=petclininc \\
-  -Dsonar.host.url=http://34.237.162.141:9000 \\
-  -Dsonar.login=3a1f24d74b59c66cb66bf95696f005674cb37cd3
-  -Dsonar.sources=src
-  -Dlicense.skip=true
-  -Dserver.port=8888
+Â  -Dsonar.projectKey=petclininc \\
+Â  -Dsonar.host.url=http://34.237.162.141:9000 \\
+Â  -Dsonar.login=3a1f24d74b59c66cb66bf95696f005674cb37cd3
+Â Â -Dsonar.sources=src
+Â Â -Dlicense.skip=true
+Â Â -Dserver.port=8888
 '''
       }
     }
