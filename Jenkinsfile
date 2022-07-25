@@ -20,7 +20,7 @@ pipeline {
 -Dsonar.login=e5d2929e2d8605d8d7594dc83fa8bd45cd973dd1\\
 -Dsonar.sources=src\\
 -Dlicense.skip=true\\
--Dsonar.exclusions=**/*.java'''
+-Dsonar.java.binaries=target'''
       }
     }
 
