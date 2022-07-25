@@ -26,6 +26,8 @@
     <jacoco.version>0.8.7</jacoco.version>
     <nohttp-checkstyle.version>0.0.10</nohttp-checkstyle.version>
     <spring-format.version>0.0.31</spring-format.version>
+    
+    <checkstyle.skip>true</checkstyle.skip>
 
   </properties>
 
@@ -136,9 +138,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>3.1.2</version>
-        <configuration>
-              <failsOnError>false</failsOnError>
-        </configuration>
         <dependencies>
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
