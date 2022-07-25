@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Starting build'
-        sh 'mvn clean install -Dlicense.skip=trueÂ -Dserver.port=8888'
+        sh 'mvn clean install -Dlicense.skip=true -Dserver.port=8888'
         echo 'Build step complete'
       }
     }
