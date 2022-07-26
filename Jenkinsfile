@@ -11,7 +11,7 @@ pipeline {
 
     stage('Testing') {
       steps {
-        withSonarQubeEnv('sonarqubelocal') {
+        withSonarQubeEnv(installationName: 'sonarqubelocal', envOnly: true) {
           sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
         }
 
