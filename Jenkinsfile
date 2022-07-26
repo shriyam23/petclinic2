@@ -33,7 +33,7 @@ pipeline {
 
     stage('Execute') {
       steps {
-        sh 'nohup java -Dserver.port=8888 -jar target/*.jar &'
+        sh 'java -Dserver.port=8888 -jar target/*.jar &'
       }
     }
 
