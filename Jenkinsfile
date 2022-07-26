@@ -11,17 +11,15 @@ pipeline {
 
     stage('Testing') {
       steps {
-        withSonarQubeEnv(installationName: 'sonarqubelocal', envOnly: true) {
-          sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
+        withSonarQubeEnv(installationName: 'sonarqubelocal') {
+          sh '''mvn install org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar
+                mvn verify sonar:sonar \\
+                -Dsonar.host.url=http://3.225.167.125:9000 \\
+                -Dsonar.login=e5d2929e2d8605d8d7594dc83fa8bd45cd973dd1\\
+                -Dsonar.sources=src/main/java\\
+                -Dlicense.skip=true\\
+                -Dsonar.java.binaries=target/classes'''
         }
-
-        sh '''mvn clean install 
-mvn -e sonar:sonar\\
--Dsonar.host.url=http://3.225.167.125:9000 \\
--Dsonar.login=e5d2929e2d8605d8d7594dc83fa8bd45cd973dd1\\
--Dsonar.sources=src/main/java\\
--Dlicense.skip=true\\
--Dsonar.java.binaries=target/classes'''
       }
     }
 
