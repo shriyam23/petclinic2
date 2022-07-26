@@ -18,7 +18,8 @@ pipeline {
                 -Dsonar.login=e5d2929e2d8605d8d7594dc83fa8bd45cd973dd1\\
                 -Dsonar.sources=src/main/java\\
                 -Dlicense.skip=true\\
-                -Dsonar.java.binaries=target/classes'''
+                -Dsonar.java.binaries=target/classes\\
+'''
         }
 
       }
@@ -32,7 +33,7 @@ pipeline {
 
     stage('Execute') {
       steps {
-        sh 'java -jar target/*.jar'
+        sh 'java -Dserver.port=8888 -jar target/*.jar'
       }
     }
 
