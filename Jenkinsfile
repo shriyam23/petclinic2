@@ -11,7 +11,7 @@ pipeline {
 
     stage('Testing') {
       steps {
-        withSonarQubeEnv(installationName: 'sonarqubelocal') {
+        withSonarQubeEnv('sonarqubelocal') {
           sh '''mvn install org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar
                 mvn verify sonar:sonar \\
                 -Dsonar.host.url=http://3.225.167.125:9000 \\
@@ -20,6 +20,13 @@ pipeline {
                 -Dlicense.skip=true\\
                 -Dsonar.java.binaries=target/classes'''
         }
+
+      }
+    }
+
+    stage('Archive') {
+      steps {
+        archiveArtifacts 'target/*'
       }
     }
 
