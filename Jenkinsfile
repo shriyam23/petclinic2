@@ -33,7 +33,8 @@ pipeline {
 
     stage('Execute') {
       steps {
-        sh 'java -Dserver.port=8888 -jar target/*.jar &'
+        sh '''kill -9 $(lsof -i:8888 -t) 2> /dev/null
+java -Dserver.port=8888 -jar target/*.jar&'''
       }
     }
 
