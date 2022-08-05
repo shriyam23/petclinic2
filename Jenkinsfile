@@ -15,9 +15,9 @@ pipeline {
       }
     }
 
-    stage('Deployment') {
+    stage('SCM Checkout') {
       steps {
-        ansiblePlaybook(playbook: 'deployment.yml', credentialsId: 'private-key', installation: 'Ansible', inventory: 'dev.inv', becomeUser: 'root', forks: -100, sudoUser: 'root', disableHostKeyChecking: true)
+        git(url: 'https://github.com/shriyam23/petclinic2.git', branch: 'main', poll: true)
       }
     }
 
