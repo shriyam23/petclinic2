@@ -9,7 +9,7 @@
     - name: Install JDK
       raw: sudo apt install openjdk-11-jdk -y
     - name: Install Maven
-      raw: sudo apt install maven -
+      raw: sudo apt install maven -y
     - name: Copy files
       copy: target/* dest=/home/ubuntu/app/
     - name : Kill processes on port 8080
