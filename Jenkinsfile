@@ -21,5 +21,11 @@ pipeline {
       }
     }
 
+    stage('Deploy') {
+      steps {
+        ansiblePlaybook(playbook: 'deployment.yml', becomeUser: 'root', disableHostKeyChecking: true, credentialsId: 'private-key', sudoUser: 'root')
+      }
+    }
+
   }
 }
