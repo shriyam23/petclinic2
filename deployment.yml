@@ -1,0 +1,26 @@
+---
+- hosts: webservers 
+  become: True
+  tasks:
+    - name: Install wget
+      apt: pkg=wget
+    - name: Install jre
+      raw: sudo apt install default-jre -y
+    - name: Install JDK
+      raw: sudo apt install openjdk-11-jdk -y
+    - name: Install Maven
+      raw: sudo apt install maven -
+    - name: Install packages
+      yum:
+        name: "httpd"
+        state: "present"
+    - name: Start Apache server
+      service:
+        name: httpd
+        state: started
+        enabled: True
+    - name: Deploy static website
+      copy:
+        src: index.html
+        dest: /var/www/html/
+...
