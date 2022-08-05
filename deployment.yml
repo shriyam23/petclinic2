@@ -10,17 +10,10 @@
       raw: sudo apt install openjdk-11-jdk -y
     - name: Install Maven
       raw: sudo apt install maven -
-    - name: Install packages
-      yum:
-        name: "httpd"
-        state: "present"
-    - name: Start Apache server
-      service:
-        name: httpd
-        state: started
-        enabled: True
-    - name: Deploy static website
-      copy:
-        src: index.html
-        dest: /var/www/html/
+    - name: Copy files
+      copy: target/* dest=/home/ubuntu/app/
+    - name : Kill processes on port 8080
+      raw: kill -9 $(sudo lsof -t -i:8080)
+    - name: Deploy jar file
+      raw: java -Dserver.port=8888 -jar /home/ubuntu/app/*.jar
 ...
