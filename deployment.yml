@@ -18,7 +18,7 @@
       raw: sudo apt install maven -y
     - name: Copy file with owner and permissions
       ansible.builtin.copy:
-        src:  target/* 
+        src:  /var/lib/jenkins/workspace/petclinic2_main/files/target/*.jar
         dest: /home/ubuntu/app/
         owner: root
         group: root
