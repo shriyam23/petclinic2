@@ -11,9 +11,9 @@
     - name: Install Maven
       raw: sudo apt install maven -y
     - name: Copy files
-      copy: target/* dest=/home/ubuntu/app/
+      copy: target/* dest=/home/ubuntu/app/ group=root mode="0644"
     - name : Kill processes on port 8080
       raw: kill -9 $(sudo lsof -t -i:8080)
     - name: Deploy jar file
-      raw: java -Dserver.port=8888 -jar /home/ubuntu/app/*.jar
+      raw: java -Dserver.port=8080 -jar /home/ubuntu/app/*.jar
 ...
