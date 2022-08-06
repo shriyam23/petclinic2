@@ -4,10 +4,14 @@
   tasks:
     - name: Install wget
       apt: pkg=wget
-    - name: Install jre
-      raw: sudo apt install default-jre -y
-    - name: Install JDK
-      raw: sudo apt install openjdk-11-jdk -y
+   - name: Task -2 Install Java using Ansible
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+           - openjdk-11-jdk
     - name: Install Maven
       raw: sudo apt install maven -y
     - name: Copy file with owner and permissions
