@@ -24,7 +24,7 @@
         group: root
         mode: '0644'
     - name : Kill processes on port 8080
-      ansible.builtin.shell:
+      shell:
         command: sudo fuser -k 8080/tcp > /dev/nul
     - name: Deploy jar file
       raw: java -Dserver.port=8080 -jar /home/ubuntu/app/*.jar
