@@ -10,8 +10,13 @@
       raw: sudo apt install openjdk-11-jdk -y
     - name: Install Maven
       raw: sudo apt install maven -y
-    - name: Copy files
-      copy: target/* dest=/home/ubuntu/app/ group=root mode="0644"
+    - name: Copy file with owner and permissions
+      ansible.builtin.copy:
+        src:  target/* 
+        dest: /home/ubuntu/app/
+        owner: root
+        group: root
+        mode: '0644'
     - name : Kill processes on port 8080
       raw: kill -9 $(sudo lsof -t -i:8080)
     - name: Deploy jar file
