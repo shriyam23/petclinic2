@@ -2,10 +2,12 @@
 - hosts: webservers 
   become: True
   tasks:
-    - name: Install wget
-      apt: pkg=wget
-   - name: Task -2 Install Java using Ansible
-      become: yes
+    - name: Update apt
+      become: True
+      apt:
+         update_cache: yes
+    - name: Task -2 Install Java using Ansible
+      become: True
       apt:
         name: "{{ packages }}"
         state: present
