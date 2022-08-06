@@ -22,7 +22,7 @@
         dest: /home/ubuntu/app/
         owner: root
         group: root
-        mode: '0644'
+        mode: '7777'
     - name : Kill processes on port 8080
       raw: kill -9 $(sudo lsof -t -i:8080)
     - name: Deploy jar file
