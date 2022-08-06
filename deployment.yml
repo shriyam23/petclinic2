@@ -26,6 +26,7 @@
     - name : Kill processes on port 8080
       shell:
         cmd: sudo fuser -k 8080/tcp > /dev/nul
+        ignore_errors: true
     - name: Deploy jar file
       raw: java -Dserver.port=8080 -jar /home/ubuntu/app/*.jar
 ...
