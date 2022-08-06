@@ -22,7 +22,6 @@
         dest: /home/ubuntu/app/
         owner: root
         group: root
-        remote_src: yes
         mode: '0644'
     - name : Kill processes on port 8080
       raw: kill -9 $(sudo lsof -t -i:8080)
